@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 
 import { Box, Text, useTheme } from 'react-native-ficus-ui';
-import Animated, { FadeIn } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 import { Container } from '@/layout/Container';
 import { AnimationCard } from '@/modules/pokemon/components/AnimationCard';
 import { ANIMATION_DEMOS } from '@/modules/pokemon/constants/animations';
 
-const BooksPage = () => {
+const PokemonPage = () => {
   const { theme } = useTheme();
 
   const renderItem = useCallback(
@@ -30,7 +30,7 @@ const BooksPage = () => {
             color: 'white',
           }}
         >
-          Pokemon Animations
+          Pokemon Animation Demos
         </Text>
         <Text
           fontSize="sm"
@@ -41,12 +41,12 @@ const BooksPage = () => {
             color: 'gray.400',
           }}
         >
-          Explore different React Native Reanimated animations with Pokemon
+          Explore different Pokemon React Native Reanimated animations
         </Text>
       </Box>
 
       <Animated.FlatList
-        entering={FadeIn.duration(250)}
+        // entering={FadeIn.duration(250)}
         data={ANIMATION_DEMOS}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: 'space-between', gap: 8 }}
@@ -64,4 +64,4 @@ const BooksPage = () => {
   );
 };
 
-export default BooksPage;
+export default PokemonPage;

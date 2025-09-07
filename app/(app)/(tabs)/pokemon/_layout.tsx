@@ -1,16 +1,13 @@
-import { useTranslation } from 'react-i18next';
-
 import { Stack } from '@/layout/Stack';
 
-const BooksStack = () => {
-  const { t } = useTranslation();
+const PokemonStack = () => {
   return (
     <Stack
       initialRouteName="index"
       screens={[
         {
           route: 'index',
-          title: t('layouts:tabs.books'),
+          title: 'Pokemon',
           options: {
             isTabBarScreen: true,
           },
@@ -20,4 +17,4 @@ const BooksStack = () => {
   );
 };
 
-export default BooksStack;
+export default PokemonStack;

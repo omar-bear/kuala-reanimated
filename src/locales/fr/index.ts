@@ -1,6 +1,5 @@
 import account from './account.json';
 import auth from './auth.json';
-import books from './books.json';
 import commons from './commons.json';
 import components from './components.json';
 import home from './home.json';
@@ -17,7 +16,6 @@ export default {
   register,
   onboarding,
   layouts,
-  books,
   home,
   account,
   components,

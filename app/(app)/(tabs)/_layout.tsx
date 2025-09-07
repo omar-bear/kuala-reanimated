@@ -27,8 +27,8 @@ const HomeTabs = () => {
           options: { header: () => <HomeHeader /> },
         },
         {
-          route: 'books',
-          title: t('layouts:tabs.books'),
+          route: 'pokemon',
+          title: 'Pokemon',
           icon: Book,
           focusedIcon: BookFilled,
           options: { headerShown: false },

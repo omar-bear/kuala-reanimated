@@ -12,7 +12,7 @@ const AppStack = () => {
           },
         },
         {
-          route: 'book/[id]',
+          route: 'animations',
           options: {
             headerShown: false,
           },
