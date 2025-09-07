@@ -1,31 +1,51 @@
-<h1 align="center"><img src="assets/thumbnail.png" alt="Start UI Native" /></h1>
+<h1 align="center"><img src="assets/thumbnail.png" alt="Kuala Animations" /></h1>
 
-🚀 Start UI [native] is a opinionated [Expo](https://expo.dev/) starter repository created & maintained by the [BearStudio Team](https://www.bearstudio.fr/team) and other contributors.
-It represents our team's up-to-date stack that we use when creating React Native apps for our clients.
+🎮 **Kuala Animations** is a React Native animation showcase app built with [Expo](https://expo.dev/) and [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/). This project demonstrates various animation techniques using Pokemon as interactive elements.
 
-This starter is oriented to use Expo with Expo EAS features to have full access to native code.
-
-StartUI [native] needs [StartUI web](https://github.com/BearStudio/start-ui-web) v2 as API in order to work correctly.  
-Make sure to have a local/deployed installation of StartUI [web] v2 before using StartUI [native].
+This app features a comprehensive collection of smooth animations including flat list transitions, falling animations, transform effects, and interactive Pokemon-based animations - all powered by local assets for optimal performance.
 
 ---
 
-## Technology
+## ✨ Features
+
+### 🎯 Animation Showcase
+- **Flat List Animations**: Interactive list transitions with Pokemon teams
+- **Flat List Row Animations**: Row-based list animations with spring effects  
+- **Falling Pokemon**: Continuous falling animation with random properties
+- **Pokemon Move**: Touch-based horizontal movement animations
+- **Pokemon Rotate**: 360-degree rotation animations on tap
+- **Pokemon Transform**: Evolution animations with size and opacity transitions
+
+### 🖼️ Asset Management
+- **100 Local Pokemon Images**: High-quality Pokemon assets (001-100)
+- **Random Selection**: Different Pokemon appear each animation session
+- **Optimized Performance**: Local assets for faster loading and offline capability
+
+### 🎨 UI/UX
+- **Dark Mode Support**: Seamless light/dark theme switching
+- **Responsive Design**: Optimized for various screen sizes
+- **Smooth Transitions**: 60fps animations with React Native Reanimated
+- **Interactive Elements**: Touch-based animations and gestures
+
+---
+
+## Technology Stack
 
 - 🚀 [Expo SDK 52](https://expo.dev/)
 - 📱 [Expo EAS](https://expo.dev/eas)
 - ⚛️ [Expo Router 4](https://expo.github.io/router/docs/)
+- 🎬 [React Native Reanimated 3](https://docs.swmansion.com/react-native-reanimated/)
 - 🌿 [Ficus UI](https://ficus-ui.com/)
 - 🐜 [Formiz](https://formiz-react.com/)
 - ↔ [Zodios](https://www.zodios.org/)
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-This app is using Expo Go with [Expo development builds](https://docs.expo.dev/workflow/overview/#development-builds). In order to launch the app, you will need to install android and ios tooling:
+This app uses Expo with [Expo development builds](https://docs.expo.dev/workflow/overview/#development-builds). To run the animations, you'll need to install Android and iOS development tools:
 
 #### Android
 
@@ -35,88 +55,212 @@ See https://reactnative.dev/docs/environment-setup?guide=native&platform=android
 
 See https://reactnative.dev/docs/environment-setup?guide=native&platform=ios
 
-### Update .env values
-
-Put your env values on .env file. Environment variables inserted on your local machine or on Expo EAS platform will overwrite the variables of .env file.
+### Installation & Setup
 
 ```bash
-# Env var used to call api endpoints — generally it will be your start-ui-web api url
-API_URL='your api url here'
+# Clone the repository
+git clone https://github.com/omar-bear/kuala-reanimated.git
+cd kuala-reanimated
 
-# Env var used to get the open api file, used to generate zodios client
-OPEN_API_URL='your open api api url here'
-```
-
-### Example demo
-```env
-API_URL=https://demo.start-ui.com/api/rest
-OPEN_API_URL=https://demo.start-ui.com/api/openapi.json
-```
-
-### Installation
-
-```bash
-# Install dependencies and generate api client
+# Install dependencies
 pnpm install
+```
 
-# Then, choose based on the platform you want to dev on:
-pnpm android # Launch on your android device if detected, or an Android emulator
-pnpm ios     # Launch on your iOS device if detected, or an iOS emulator
+### Environment Configuration
+
+Create a `.env` file with your API configuration:
+
+```env
+# API endpoint configuration
+API_URL='your api url here'
+OPEN_API_URL='your open api url here'
+AUTH_BASE_URL='your auth base url here'
+BETTER_AUTH_OPEN_API='your better auth api url here'
+MODE='development'
+```
+
+### Example demo configuration
+```env
+API_URL='https://start-ui-web-restart.vercel.app/api/rest'
+OPEN_API_URL='https://start-ui-web-restart.vercel.app/api/openapi/app/schema'
+AUTH_BASE_URL='https://start-ui-web-restart.vercel.app/api/auth'
+BETTER_AUTH_OPEN_API='https://start-ui-web-restart.vercel.app/api/openapi/auth/schema'
+MODE="DEV"
+
 ```
 
 ### Development
 
 ```bash
-# Install dependencies and generate api client
-pnpm install
-
-# With Expo Go
+# Run the app in development mode
 pnpm dev
-# * press s to swith to Expo Go
-# * scan the QR Code with your phone
 
-# With Android Emulator
-pnpm android # Launch on your android device if detected, or an Android emulator
+# Platform-specific development
+pnpm android # Launch on Android device/emulator
+pnpm ios     # Launch on iOS device/emulator
 
-# With IOS Emulator
-pnpm ios     # Launch on your iOS device if detected, or an iOS emulator
-# If that doesn't work maybe try to:
-# * run pod install on ios folder
-# * run project from xcode (maybe you should select a team for the project)
+# Run with Expo Go
+pnpm dev
+# * Press 's' to switch to Expo Go
+# * Scan the QR Code with your phone
 ```
 
-## Storybook Integration
+## 🎮 Animation Guide
 
-Start UI Native is equipped with Storybook, enhancing component development with an isolated and interactive environment. Storybook is essential for UI development, allowing you to build and test components independently from the app's main user interface.
+### Available Animations
+
+1. **Flat List Animation** (`/animations/flat-list-animation`)
+   - Interactive Pokemon team management with smooth transitions
+   - Drag Pokemon between two teams with layout animations
+   - Uses 16 random Pokemon (8 per team) for optimal performance
+
+2. **Flat List Row Animation** (`/animations/flat-list-row-animation`)
+   - Row-based list with spring animations
+   - Pokemon movement between teams with row transitions
+   - Clean list interface with Pokemon details
+
+3. **Falling Pokemon** (`/animations/falling-pokemon`)
+   - Continuous falling animation with 6 random Pokemon
+   - Random size, rotation, and positioning
+   - Infinite loop with staggered timing
+
+4. **Pokemon Move** (`/animations/pokemon-move`)
+   - Simple horizontal movement on tap
+   - Uses a random Pokemon each session
+   - Demonstrates basic translation animations
+
+5. **Pokemon Rotate** (`/animations/pokemon-rotate`)
+   - 360-degree rotation animation on tap
+   - Smooth rotation transforms
+   - Continuous rotation accumulation
+
+6. **Pokemon Transform** (`/animations/pokemon-transform`)
+   - Evolution-based transformation (Charmander → Charmeleon → Charizard)
+   - Size and opacity transitions
+   - Demonstrates complex state-based animations
+
+### Animation Features
+
+- **60fps Performance**: Smooth animations using React Native Reanimated
+- **Random Pokemon**: Different Pokemon appear each session for variety
+- **Local Assets**: 100 Pokemon images stored locally for optimal performance
+- **Dark Mode**: All animations support light and dark themes
+- **Responsive**: Animations adapt to different screen sizes
+
+---
+
+## 📱 Storybook Integration
+
+Kuala Animations includes Storybook for component development and testing in an isolated environment.
 
 ### Running Storybook
 
-Execute the command below to launch Storybook. It toggles an environment variable `process.env.STORYBOOK_ENABLED` to `true`, activating Storybook mode.
-
 ```bash
+# Launch Storybook mode
 pnpm storybook
-```
 
-Conversely, starting your app normally will **not set** `process.env.STORYBOOK_ENABLED`, which means the app will not enter Storybook mode.
-
-```bash
+# Launch normal app mode
 pnpm start
 ```
 
-### Developing with Storybook
+### Component Stories
 
-Instead of a separate `stories` directory, we create stories alongside our components. For each component, create a `ComponentName.stories.tsx` file in the same directory as the component. Write your stories within this file to showcase and test the different states and props of the component. This approach keeps relevant stories and components tightly coupled and easily maintainable.
+Stories are created alongside components in `ComponentName.stories.tsx` files, keeping components and their documentation tightly coupled for better maintainability.
 
+---
 
-## [Expo EAS builds](https://docs.expo.dev/build/introduction/)
+## 🛠️ Scripts
+
+```
+
+### Development
+
+```bash
+# Lint and fix code
+npx expo lint --fix
+
+# Type checking
+npx tsc --noEmit
+
+# Build for production
+npx expo build
+```
+
+---
+
+## 📁 Project Structure
+
+```
+kuala-animations/
+├── app/                          # Expo Router pages
+│   ├── (app)/
+│   │   └── animations/          # Animation showcase pages
+│   ├── (auth)/                  # Authentication pages
+│   └── storybook/               # Storybook integration
+├── assets/
+│   └── pokemons/               # 100 Pokemon images (001-100.png)
+├── src/
+│   ├── components/             # Reusable UI components
+│   ├── constants/
+│   │   └── pokemons.ts        # Pokemon data with local imports
+│   ├── modules/
+│   │   └── pokemons/          # Pokemon-specific components
+│   └── theme/                 # Theme configuration
+└── scripts/                   # Asset generation scripts
+```
+
+---
+
+## 🎯 Performance Optimizations
+
+- **Local Assets**: All Pokemon images stored locally for instant loading
+- **Random Sampling**: Animations use limited Pokemon sets (6-16) for optimal performance  
+- **React Native Reanimated**: Native-thread animations for 60fps performance
+- **Lazy Loading**: Components loaded on-demand with Expo Router
+- **Optimized Images**: PNG assets optimized for mobile devices
+
+---
+
+## 🔧 [Expo EAS Builds](https://docs.expo.dev/build/introduction/)
 
 > EAS Build is a hosted service for building app binaries for your Expo and React Native projects.
 
-[Follow the steps here to setup and install the eas cli](https://docs.expo.dev/build/setup/#prerequisites).
+[Follow these steps to setup EAS CLI](https://docs.expo.dev/build/setup/#prerequisites).
 
+### Building for Production
 
-### BLE / Bluetooth
+```bash
+# Build for Android
+eas build --platform android
 
-Bluetooth feature has been removed to simplify expo project setup.
+# Build for iOS  
+eas build --platform ios
 
-If you want to use this feature, you can find [an expo article](https://expo.dev/blog/how-to-build-a-bluetooth-low-energy-powered-expo-app) that explains how to add it, or you can check the deletion commit of the feature [here](https://github.com/BearStudio/start-ui-native/pull/111/commits/a8d437fff1065f1450113b71a4bd962868f8b4be)
+# Build for both platforms
+eas build --platform all
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-animation`)
+3. Commit your changes (`git commit -m 'Add amazing animation'`)
+4. Push to the branch (`git push origin feature/amazing-animation`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🎨 Credits
+
+- **Pokemon Assets**: Official Pokemon images from The Pokemon Company
+- **Animations**: Built with React Native Reanimated
+- **UI Framework**: Ficus UI for consistent design
+- **Base Template**: Originally based on Start UI Native by BearStudio
