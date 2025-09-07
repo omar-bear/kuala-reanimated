@@ -8,10 +8,18 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { allPokemons } from '@/constants/pokemons';
 import { Container } from '@/layout/Container';
+
+// Get a random Pokemon for this animation
+const getRandomPokemon = () => {
+  // eslint-disable-next-line sonarjs/pseudo-random
+  return allPokemons[Math.floor(Math.random() * allPokemons.length)];
+};
 
 const PokemonMoveAnimation = () => {
   const translation = useSharedValue(0);
+  const randomPokemon = getRandomPokemon();
 
   const handlePress = () => {
     translation.value = withTiming(translation.value === 0 ? 200 : 0, {
@@ -54,9 +62,7 @@ const PokemonMoveAnimation = () => {
           <TouchableWithoutFeedback onPress={handlePress}>
             <Animated.View style={animatedStyle}>
               <Animated.Image
-                source={{
-                  uri: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
-                }}
+                source={randomPokemon.image}
                 style={{ width: 100, height: 100 }}
               />
             </Animated.View>

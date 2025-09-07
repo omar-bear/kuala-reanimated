@@ -52,7 +52,7 @@ export const PokemonRowItem: FC<{
         flex={1}
       >
         <Image
-          source={{ uri: pokemon?.image }}
+          source={pokemon?.image}
           style={{
             width: 40,
             height: 40,

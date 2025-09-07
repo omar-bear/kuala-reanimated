@@ -19,32 +19,6 @@ const PokemonPage = () => {
 
   return (
     <Container px={0} py={0}>
-      <Box px="md" py="lg">
-        <Text
-          fontSize="xl"
-          fontWeight="bold"
-          textAlign="center"
-          mb="md"
-          color="gray.900"
-          _dark={{
-            color: 'white',
-          }}
-        >
-          Pokemon Animation Demos
-        </Text>
-        <Text
-          fontSize="sm"
-          color="gray.600"
-          textAlign="center"
-          mb="lg"
-          _dark={{
-            color: 'gray.400',
-          }}
-        >
-          Explore different Pokemon React Native Reanimated animations
-        </Text>
-      </Box>
-
       <Animated.FlatList
         // entering={FadeIn.duration(250)}
         data={ANIMATION_DEMOS}
@@ -56,6 +30,33 @@ const PokemonPage = () => {
           gap: 8,
           overflow: 'visible',
         }}
+        ListHeaderComponent={
+          <Box px="md" py="lg">
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              textAlign="center"
+              mb="md"
+              color="gray.900"
+              _dark={{
+                color: 'white',
+              }}
+            >
+              Pokemon Animation Demos
+            </Text>
+            <Text
+              fontSize="sm"
+              color="gray.600"
+              textAlign="center"
+              mb="lg"
+              _dark={{
+                color: 'gray.400',
+              }}
+            >
+              Explore different Pokemon React Native Reanimated animations
+            </Text>
+          </Box>
+        }
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}

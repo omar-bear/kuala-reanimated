@@ -3,16 +3,24 @@ import { useState } from 'react';
 import { Box, Text } from 'react-native-ficus-ui';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import {
-  initialListAPokemons,
-  initialListBPokemons,
-} from '@/constants/pokemons';
+import { allPokemons } from '@/constants/pokemons';
 import { Container } from '@/layout/Container';
 import { PokemonRowItem } from '@/modules/pokemons/PokemonRowItem';
 
+// Function to get random Pokemon
+const getRandomPokemons = (count: number) => {
+  // eslint-disable-next-line sonarjs/pseudo-random
+  const shuffled = [...allPokemons].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
+
 const FlatListRowAnimation = () => {
-  const [listAPokemons, setListAPokemons] = useState(initialListAPokemons);
-  const [listBPokemons, setListBPokemons] = useState(initialListBPokemons);
+  const [listAPokemons, setListAPokemons] = useState(() =>
+    getRandomPokemons(8)
+  );
+  const [listBPokemons, setListBPokemons] = useState(() =>
+    getRandomPokemons(8)
+  );
 
   const handlePress = (id: string) => {
     const pokemonAToMove = listAPokemons.find((p) => p.id === id);

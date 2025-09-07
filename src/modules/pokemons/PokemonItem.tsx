@@ -64,7 +64,7 @@ export const PokemonItem: FC<{ id: string; onPress: (id: string) => void }> = ({
         }}
       >
         <Image
-          source={{ uri: pokemon?.image }}
+          source={pokemon?.image}
           style={{
             width: '100%',
             height: '100%',

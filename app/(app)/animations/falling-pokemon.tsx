@@ -10,7 +10,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { pokemonsList3 } from '@/constants/pokemons';
+import { allPokemons } from '@/constants/pokemons';
 import { Container } from '@/layout/Container';
 
 const screenWidth = Dimensions.get('screen').width;
@@ -20,8 +20,15 @@ const randomBetween = (min: number, max: number) =>
   // eslint-disable-next-line sonarjs/pseudo-random
   Math.random() * (max - min) + min;
 
+// Function to get random Pokemon
+const getRandomPokemons = (count: number) => {
+  // eslint-disable-next-line sonarjs/pseudo-random
+  const shuffled = [...allPokemons].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
+
 type AnimatedPokemonProps = {
-  source: string;
+  source: any;
   index: number;
 };
 
@@ -89,7 +96,7 @@ const AnimatedPokemon: FC<AnimatedPokemonProps> = ({ source, index }) => {
   return (
     <Animated.View style={[styles.imageContainer, animatedStyle]}>
       <Animated.Image
-        source={{ uri: source }}
+        source={source}
         style={{ width: '100%', height: '100%' }}
       />
     </Animated.View>
@@ -97,6 +104,8 @@ const AnimatedPokemon: FC<AnimatedPokemonProps> = ({ source, index }) => {
 };
 
 const FallingPokemonAnimation = () => {
+  const randomPokemons = getRandomPokemons(100);
+
   return (
     <Container px={0} py={0}>
       <Box
@@ -131,10 +140,10 @@ const FallingPokemonAnimation = () => {
       </Box>
 
       <Box flex={1} position="relative" overflow="hidden">
-        {pokemonsList3.slice(0, 6).map((pokemon, index) => (
+        {randomPokemons.map((pokemon, index) => (
           <AnimatedPokemon
-            key={pokemon.name}
-            source={pokemon.imageUrl}
+            key={pokemon.id}
+            source={pokemon.image}
             index={index}
           />
         ))}

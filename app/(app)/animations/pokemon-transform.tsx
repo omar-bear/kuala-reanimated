@@ -10,15 +10,21 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { allPokemons } from '@/constants/pokemons';
 import { Container } from '@/layout/Container';
+
+// Get Charmander evolution line from assets
+const charmanderEvolutions = [
+  allPokemons.find((p) => p.id === '4'), // Charmander
+  allPokemons.find((p) => p.id === '5'), // Charmeleon
+  allPokemons.find((p) => p.id === '6'), // Charizard
+].filter(Boolean);
 
 const PokemonTransformAnimation = () => {
   const imageSize = useSharedValue(100);
   const imageOpacity = useSharedValue(1);
 
-  const [pokemonImage, setPokemonImage] = useState(
-    'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png'
-  );
+  const [currentPokemonIndex, setCurrentPokemonIndex] = useState(0);
 
   const handlePress = () => {
     // Fade out the image
@@ -33,30 +39,25 @@ const PokemonTransformAnimation = () => {
   };
 
   const changePokemon = () => {
-    if (pokemonImage.includes('004.png')) {
-      setPokemonImage(
-        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png'
-      );
-      // Animate size growth
+    const nextIndex = (currentPokemonIndex + 1) % charmanderEvolutions.length;
+    setCurrentPokemonIndex(nextIndex);
+
+    // Animate size based on evolution stage
+    if (nextIndex === 0) {
+      // Back to Charmander
+      imageSize.value = withSpring(100, {
+        damping: 15,
+        stiffness: 100,
+      });
+    } else if (nextIndex === 1) {
+      // Charmeleon
       imageSize.value = withSpring(160, {
         damping: 15,
         stiffness: 100,
       });
-    } else if (pokemonImage.includes('005.png')) {
-      setPokemonImage(
-        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png'
-      );
-      // Animate size growth
-      imageSize.value = withSpring(220, {
-        damping: 15,
-        stiffness: 100,
-      });
     } else {
-      setPokemonImage(
-        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png'
-      );
-      // Animate size back to original
-      imageSize.value = withSpring(100, {
+      // Charizard
+      imageSize.value = withSpring(220, {
         damping: 15,
         stiffness: 100,
       });
@@ -69,15 +70,7 @@ const PokemonTransformAnimation = () => {
     opacity: imageOpacity.value,
   }));
 
-  const getPokemonName = (url: string) => {
-    if (url.includes('004.png')) {
-      return 'Charmander';
-    }
-    if (url.includes('005.png')) {
-      return 'Charmeleon';
-    }
-    return 'Charizard';
-  };
+  const currentPokemon = charmanderEvolutions[currentPokemonIndex];
 
   return (
     <Container>
@@ -104,7 +97,7 @@ const PokemonTransformAnimation = () => {
           <TouchableWithoutFeedback onPress={handlePress}>
             <Animated.View style={{ alignItems: 'center' }}>
               <Animated.Image
-                source={{ uri: pokemonImage }}
+                source={currentPokemon?.image}
                 style={{
                   ...animatedImageStyle,
                   marginVertical: 20,
@@ -117,7 +110,7 @@ const PokemonTransformAnimation = () => {
                   textAlign="center"
                   _dark={{ color: 'white' }}
                 >
-                  {getPokemonName(pokemonImage)}
+                  {currentPokemon?.name}
                 </Text>
               </Box>
             </Animated.View>
