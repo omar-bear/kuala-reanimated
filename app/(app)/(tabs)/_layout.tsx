@@ -1,7 +1,7 @@
-import BookFilled from '@assets/tabs/book-filled.svg';
-import Book from '@assets/tabs/book.svg';
 import HouseFilled from '@assets/tabs/house-filled.svg';
 import House from '@assets/tabs/house.svg';
+import PokemonFilled from '@assets/tabs/pokemon-filled.svg';
+import Pokemon from '@assets/tabs/pokemon.svg';
 import UserCircleFilled from '@assets/tabs/user-circle-filled.svg';
 import UserCircle from '@assets/tabs/user-circle.svg';
 import { useTranslation } from 'react-i18next';
@@ -29,8 +29,8 @@ const HomeTabs = () => {
         {
           route: 'pokemon',
           title: 'Pokemon',
-          icon: Book,
-          focusedIcon: BookFilled,
+          icon: Pokemon,
+          focusedIcon: PokemonFilled,
           options: { headerShown: false },
         },
         {
